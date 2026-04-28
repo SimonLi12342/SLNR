@@ -1,0 +1,17 @@
+# Local build outputs
+modules/gaussian_search/build/
+modules/sparse_hash/build/
+
+# Local Python virtual environment
+.venv310/
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local data / output
+data/
+output/
+
+# Optional local notes
+README.internal.md
