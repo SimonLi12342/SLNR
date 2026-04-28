@@ -1,7 +1,13 @@
 import torch
 import torch.nn.functional as F
 import numpy as np
-import Thirdparty.skimage.measure as skimage_measure
+try:
+    import Thirdparty.skimage.measure as skimage_measure
+except ImportError:
+    # The vendored skimage binaries in this repo were built for the original
+    # Python 3.8 environment. Fall back to the environment-installed package
+    # when running under a different interpreter such as Python 3.10.
+    import skimage.measure as skimage_measure
 import open3d as o3d
 from tqdm import *
 import network
@@ -250,7 +256,7 @@ def allocate_localsdfs_in_svh(svh, scene_dataset, idxs, local_sdfs, res_scale = 
             pc_np = np.asarray(pcd_fm.points, dtype=np.float32)
         else:       # 不然就估计法向，然后用视线方向纠正
             pcd_fm = pcd_fm.transform(T_np)     #变换到世界坐标系下
-            pcd_fm.estimate_normals()    # 估计法向
+            pcd_fm.estimate_normals()    # 估计法向: PCA
             normal_np = np.asarray(pcd_fm.normals, dtype=np.float32)
             pc_np = np.asarray(pcd_fm.points, dtype=np.float32)
             rays_o = T_np[:3,3]

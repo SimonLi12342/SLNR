@@ -1,5 +1,6 @@
 Dataset:
-    workspace: "data/keble-college-04/"
+    input_mode: "ros2"   # "file" | "ros2"
+    workspace: "data/oxford-spires-example-data/keble-college-04/"
     # workspace: "data/blenheim-palace-05/"
     # workspace: "data/christ-church-02/"
     # workspace: "data/observatory-quarter-01/"
@@ -11,10 +12,22 @@ Dataset:
     # out_dir: "output/christ-church/" 
     # out_dir: "output/observatory-quarter/" 
 
+ROS2:
+    pointcloud_topic: "/velodyne_points"
+    odom_topic: "/integrated_to_init"
+    max_frames: 200
+    capture_timeout_sec: 120.0
+    max_odom_age_sec: 5.0
+    odom_pose_frame: "lidar"
+    pointcloud_qos: "reliable"
+    odom_qos: "reliable"
+    use_tf: True
+    tf_lookup_timeout_sec: 0.2
+
 DataLoader:
-    min_range: 2.5
+    min_range: 0.1
     max_range: 80.0
-    use_filter: True
+    use_filter: False
     sor_nn: 25
     sor_std: 2.5
 
