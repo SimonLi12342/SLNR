@@ -24,6 +24,28 @@ ROS2:
     use_tf: True
     tf_lookup_timeout_sec: 0.2
 
+Online:
+    warmup_frames: 20
+    max_pending_frames: 20
+    max_processed_frames_per_spin: 1
+    recent_buffer_size: 30
+    replay_buffer_size: 120
+    replay_insert_interval: 5
+    train_recent_ratio: 0.7
+    train_frames_per_step: 2
+    train_steps_per_spin: 1
+    train_points_per_frame: 4096
+    min_points_per_frame: 256
+    hash_insert_down_voxel_size: 0.05
+    max_new_anchors_per_frame: 2000
+    refresh_map_every_n_frames: 1
+    log_every_n_iters: 20
+    vis_every_n_iters: 20
+    save_every_n_iters: 1000
+    mesh_every_n_iters: 0
+    show_basis_sdf: False
+    enable_visualization: True
+
 DataLoader:
     min_range: 0.1
     max_range: 80.0
