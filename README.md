@@ -37,6 +37,8 @@ cmake -DCMAKE_PREFIX_PATH=your_env/lib/python3.8/site-packages/torch  ..
 make -j$(nproc)
 ```
 
+Note that in ``` ./Thirdparty/skimage``` , we provide a modified version of scikit-image. Specifically, changes have been made at lines 161 and 187 of ``` measure/_marching_cubes_lewiner.py```  to ignore regions without surfaces during the marching cubes process.
+
 ## Run
 
 First, download the [Oxford Spires Example Data](https://drive.google.com/file/d/1y8QIgbFzWQBxyzx9anUB9N9AyKXV3XfQ/view?usp=sharing). Please refer to the [official website](https://dynamic.robots.ox.ac.uk/datasets/oxford-spires/) for more detialed information and observe the license. Then, put the data to `./data` folder. Finally, execute the following command:
@@ -57,7 +59,18 @@ Some results are shown as below:
 This work was inspired by the B-spline basis function used in [PoissonRecon](https://github.com/mkazhdan/PoissonRecon), the neural point representation in [PIN-SLAM](https://github.com/PRBonn/PIN_SLAM) and the splatting algorithm in [3DGS](https://github.com/graphdeco-inria/gaussian-splatting). We hope that this work will inspire interested parties to develop more lightweight and efficient mapping methods for robotic spatial intelligence.
 
 ## Citation
-
+```bibtex
+@article{shi2026slnmapping,
+  title={SLNMapping: Super Lightweight Neural Mapping in Large-Scale Scenes},
+  author={Shi, Chenhui and Tang, Fulin and Wei, Hao and Wu, Yihong},
+  journal={International Journal of Computer Vision},
+  volume={134},
+  number={2},
+  pages={68},
+  year={2026},
+  publisher={Springer}
+}
+```
 ```bibtex
 @inproceedings{shi20253d,
   title={3D-SLNR: A Super Lightweight Neural Representation for Large-scale 3D Mapping},
